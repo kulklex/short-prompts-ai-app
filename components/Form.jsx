@@ -1,7 +1,10 @@
 import React from 'react'
 import Link from 'next/link'
+import { MuiChipsInput } from 'mui-chips-input'
 
 export default function Form({type, post, setPost, submitting, setSubmitting, handleSubmit}) {
+  
+
   return (
     <section className="w-full max-w-full flex flex-start flex-col">
       <h1 className="head_text text-left">
@@ -34,9 +37,9 @@ export default function Form({type, post, setPost, submitting, setSubmitting, ha
 
         <label>
           <span className="font-satoshi font-semibold text-base text--gray-700">
-            Tag {` `} <span className="font-normal">(#product #web-development #idea)</span>
+            Tag {` `} <span className="font-normal">(product web-development idea)</span>
           </span>
-          <textarea
+          {/* <textarea
             value={post.tag}
             onChange={(e) => setPost({
               ...post, tag: e.target.value
@@ -44,6 +47,10 @@ export default function Form({type, post, setPost, submitting, setSubmitting, ha
             placeholder="#tag"
             required
             className="form_input"
+          /> */}
+          <MuiChipsInput value={post.tag} onChange={(e) => setPost({
+              ...post, tag: e
+            })}  className="form_input" 
           />
         </label>
 

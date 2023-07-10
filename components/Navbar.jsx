@@ -3,11 +3,13 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
 
 export default function Navbar() {
     
     const {data: session} = useSession()
+    const router = useRouter()
 
     const [providers, setProviders] = useState(null)
     const [toggleDropdown, setToggleDropdown] = useState(false)
@@ -21,11 +23,15 @@ export default function Navbar() {
         setUpProviders()
     }, [])
 
+    const handleSignOut = () => {
+        signOut()
+        router.push('/')
+    }
   return (
     <nav className='flex-between w-full mb-16 pt-3'>
         <Link href="/" className="flex gap-2 flex-center">
-            <Image src="./images/logo.svg" alt="logo" width={30} height="30" className="object-contain" />
-            <p className='logo_text'>Promptopia</p>
+        <Image src="/icons/logo.jfif" alt="logo" width={30} height="30" className="object-contain rounded-full" />
+            <p className='logo_text'>Posts</p>
         </Link>
 
         {/* Desktop Navigation Starts*/}
@@ -36,7 +42,7 @@ export default function Navbar() {
                     Create Post
                 </Link>
 
-                <button type='button' onClick={signOut} className='outline_btn'>
+                <button type='button' onClick={handleSignOut} className='outline_btn'>
                     Sign Out
                 </button>
 

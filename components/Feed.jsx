@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import PromptCard from './PromptCard'
-
+import Loading from './Loading'
 
 export default function Feed() {
   const [searchText, setSearchText] = useState("")
@@ -67,6 +67,8 @@ export default function Feed() {
       </div>
     )
   }
+
+  if (!posts.length) return <Loading />
 
   return (
     <section className="feed">

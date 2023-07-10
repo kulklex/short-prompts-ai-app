@@ -15,7 +15,7 @@ export default function EditPrompt() {
     const [submitting, setSubmitting] = useState(false)
     const [post, setPost] = useState({
         prompt: '',
-        tag: '',
+        tag: [],
     })
 
 
@@ -24,9 +24,11 @@ export default function EditPrompt() {
             const response = await fetch(`/api/prompt/${promptId}`)
 
             const data = await response.json()
+            let tagData = data.tag.toString()
+            let newTag = tagData.split(',')
             setPost({
-                prompt: data.prompt,
-                tag: data.tag,
+                prompt: data?.prompt,
+                tag: newTag,
             })
         }
 
@@ -44,8 +46,8 @@ export default function EditPrompt() {
             const response = await fetch(`/api/prompt/${promptId}`, {
                 method: 'PATCH',
                 body: JSON.stringify({
-                    prompt: post.prompt,
-                    tag: post.tag
+                    prompt: post?.prompt,
+                    tag: post?.tag.toString()
                 })
             })
 

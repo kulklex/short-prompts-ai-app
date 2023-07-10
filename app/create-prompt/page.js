@@ -15,7 +15,7 @@ export default function CreatePrompt() {
     const [submitting, setSubmitting] = useState(false)
     const [post, setPost] = useState({
         prompt: '',
-        tag: '',
+        tag: [],
     })
 
 
@@ -29,7 +29,7 @@ export default function CreatePrompt() {
                 body: JSON.stringify({
                     prompt: post.prompt,
                     userId: session?.user.id,
-                    tag: post.tag
+                    tag: post.tag.toString(),
                 })
             })
 
