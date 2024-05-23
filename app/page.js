@@ -10,7 +10,7 @@ export default function Home(){
       </span>
     </h1>
     <p className='desc text-center'>
-      A fullstack apllication show-casing CRUD functionalities thanks to the power of nextjs! 
+      A fullstack apllication show-casing CRUD functionalities. Sign in to create posts!
     </p>
 
     <Feed />
