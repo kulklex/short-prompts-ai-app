@@ -7,8 +7,8 @@ import Loading from './Loading'
 export default function Feed() {
   const [searchText, setSearchText] = useState("")
   const [searchTimeout, setSearchTimeout] = useState()
-  const [searchedResults, setSearchedResults] = useState([])
-  const [posts, setPosts] = useState([])
+  const [searchedResults, setSearchedResults] = useState()
+  const [posts, setPosts] = useState()
 
 
   const filterPrompts = (searchtext) => {
@@ -51,7 +51,7 @@ export default function Feed() {
     }
 
     fetchPosts()
-  }, [])  
+  }, [posts])  
 
 
   const PromptCardList = ({data, handleTagClick}) => {
